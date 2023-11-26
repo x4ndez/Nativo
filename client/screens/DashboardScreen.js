@@ -67,18 +67,18 @@ const DashboardScreen = ({route, navigation}) => {
         onPress={() => navigation.navigate('Home')}
         />
 
-    <Text>Dashboard Screen: {feedback}</Text>
-
-    {projects
-    ? (
+    {projects.length > 0
+    ? (<>
 
 <FlatList
     data={projects}
     renderItem={({item}) => <ProjectItem props={item} />}
     />
 
-    )
-    : 'Loading...'}
+    </>)
+    : (<>
+        <Text>Loading...</Text>
+        </>)}
 
     {/* <ProjectItem /> */}
 
