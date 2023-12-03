@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Alert, Modal, StyleSheet, Button, Text, Pressable, View, SafeAreaView, Image} from 'react-native';
+import {Alert, TouchableOpacity, Modal, StyleSheet, Button, Text, Pressable, View, SafeAreaView, Image} from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
 import HomeScreen from './screens/HomeScreen';
@@ -10,15 +10,6 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
-function MyTabs() {
-  return (
-    <Tab.Navigator>
-      <Tab.Screen name="Home" component={HomeScreen} />
-      <Tab.Screen name="Settings" component={SettingsScreen} />
-    </Tab.Navigator>
-  );
-}
-
 const App = () => {
 
   const handlePress = () => console.log('view clicked');
@@ -27,20 +18,17 @@ const App = () => {
 
     <NavigationContainer>
 
-    <Tab.Navigator>
-      <Tab.Screen name="Home" component={HomeScreen} />
-      <Tab.Screen name="Portfolio" component={DashboardScreen} />
-    </Tab.Navigator>
-
-      {/* <Stack.Navigator
+      <Stack.Navigator
       initialRouteName='Home'
       screenOptions={{
         headerTitle: (props) => <Header {...props} />,
         headerRight: () => (
-          <Button
-          title='INFO'
-          onPress={() => alert('lol u see dat?')}
-          />
+          <TouchableOpacity>
+            <Image
+            style={styles.menuImg}
+            source={require('./assets/icons/menu.png')}
+            />
+          </TouchableOpacity>
         )
       }}
       >
@@ -49,7 +37,7 @@ const App = () => {
         component={HomeScreen}
         />
         <Stack.Screen name="Dashboard" component={DashboardScreen} />
-      </Stack.Navigator> */}
+      </Stack.Navigator>
 
     </NavigationContainer>
     </>);
@@ -64,6 +52,10 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
+  menuImg: {
+    width: 25,
+    height: 25,
+  }
 });
 
 export default App;
