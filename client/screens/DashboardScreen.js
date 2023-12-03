@@ -56,8 +56,6 @@ const DashboardScreen = ({route, navigation}) => {
 
         getRepoData();
 
-  const {feedback} = route.params;
-
   return (<>
 
     <View style={styles.mainWrapper}>
