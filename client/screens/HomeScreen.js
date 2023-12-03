@@ -1,5 +1,5 @@
 import React, {useState, useRef, useEffect} from 'react';
-import {Linking, Alert, TouchableOpacity, FlatList, ScrollView, Animated, Modal, StyleSheet, Text, Button, Pressable, View, SafeAreaView, Image} from 'react-native';
+import {Linking, Alert, TouchableOpacity, FlatList, ScrollView, Animated, Modal, StyleSheet, Text, Button, Pressable, View, SafeAreaView, Image, Touchable} from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
 
@@ -65,34 +65,58 @@ const HomeScreen = ({navigation}) => {
     showsHorizontalScrollIndicator={false}
     >
 
-        <View style={styles.desc1}>
+        <TouchableOpacity
+        style={styles.desc1}
+        onPress={ async () => {
+          await Linking.openURL('tel:+61000000000');
+        }}
+        >
           <Image
           source={require('../assets/icons/phone-call.png')}
           style={styles.icon}
           />
           <Text>Phone</Text>
-        </View>
-        <View style={styles.desc1}>
+        </TouchableOpacity>
+        <TouchableOpacity
+        style={styles.desc1}
+        onPress={ async () => {
+          await Linking.openURL('mailto:ananfro@live.com');
+        }}
+        >
         <Image
           source={require('../assets/icons/email.png')}
           style={styles.icon}
           />
           <Text>Email</Text>
-        </View>
-        <View style={styles.desc1}>
+        </TouchableOpacity>
+        <TouchableOpacity
+        style={styles.desc1}
+        onPress={ async () => {
+          const supported = await Linking.canOpenURL(linkedInURL);
+          if(supported) await Linking.openURL(linkedInURL)
+          else Alert.alert('Cannot open URL.')
+        }}
+        >
         <Image
           source={require('../assets/icons/web.png')}
           style={styles.icon}
           />
           <Text>LinkedIn</Text>
-        </View>
-        <View style={styles.desc1}>
+        </TouchableOpacity>
+        <TouchableOpacity
+        style={styles.desc1}
+        onPress={ async () => {
+          const supported = await Linking.canOpenURL(gitHubURL);
+          if(supported) await Linking.openURL(gitHubURL)
+          else Alert.alert('Cannot open URL.')
+        }}
+        >
         <Image
           source={require('../assets/icons/web.png')}
           style={styles.icon}
           />
           <Text>GitHub</Text>
-        </View>
+        </TouchableOpacity>
 
     </ScrollView>
 
@@ -156,7 +180,7 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   safeAreaView: {
-    backgroundColor: 'slategrey',
+    backgroundColor: '#F2F3F4',
     width: '100%',
     height: '100%'
   },
@@ -168,7 +192,7 @@ const styles = StyleSheet.create({
     padding: 0,
   },
   desc1: {
-    backgroundColor: 'white',
+    backgroundColor: '#D4E6F1',
     width: 200,
     borderRadius: 10,
     marginRight: 10,
@@ -222,7 +246,7 @@ const styles = StyleSheet.create({
   },
   skill: {
     padding: 6,
-    backgroundColor: 'darkslategrey',
+    backgroundColor: '#808B96',
     marginTop: 10,
     marginRight: 3,
     borderRadius: 10,
@@ -261,13 +285,14 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     paddingLeft: 10,
     paddingRight: 10,
+    gap: 10,
   },
   linkBox: {
     display: 'flex',
-    flexDirection: 'column',
+    flexDirection: 'row',
     alignItems: 'center',
-    width: '45%',
-    height: '100%',
+    flex: 1,
+    height: 100,
     justifyContent: 'center',
     backgroundColor: 'white',
     borderRadius: 10,
@@ -275,7 +300,8 @@ const styles = StyleSheet.create({
   },
   linkLogo: {
     resizeMode: 'contain',
-    width: '70%'
+    width: '70%',
+    height: '100%',
   }
 });
 
