@@ -134,7 +134,45 @@ const HomeScreen = ({navigation}) => {
 
     </View>
 
-    <ScrollView style={styles.descWrapper}></ScrollView>
+    <ScrollView style={styles.descWrapper}>
+
+      <Text style={styles.p}>
+
+      My name is Alex, I am 29 years old and I currently live in Melbourne, Australia. I am motivated, enjoy a challenge, and learning new technologies. I have a proven work history of troubleshooting issues within the IoT space.
+
+      </Text>
+
+      <Text style={styles.p}>
+
+I recently completed a Full Stack Developer bootcamp through Monash University/edX. In this period I had to present two projects as a group which gave me perspective of the experience of working within a team of programmers. I believe we had a good system; enforcing Git workflow and having regular meetings to discuss our individual progress and the project as a whole. Prior, my experience of working within a team was through construction as an electrician, but in time and experience, I became a leader. I believe having good communication within a team and a high moral, creates higher quality work. I actively try to know my peers; how they enjoy working, learn their strengths, their weaknesses, and try to form a good rapport.
+
+</Text>
+
+      <Text style={styles.p}>
+
+I frequently work with clients, where my interpersonal skills and presentation are important. I always display a friendly and approachable nature which assists in communicating with clients to understand their needs are met. Explaining complex concepts in a manner that anyone can understand is a skill, and often a challenge, which is where I believe I excel.
+
+</Text>
+
+      <Text style={styles.p}>
+
+Working as a service technician, my day-to-day duties heavily required me to work independently within a team. I am frequently scheduled to complete multiple jobs in a day, often requiring myself to assess, diagnose and fix issues within the allocated time-frame; including making required documentation and reports to be communicated with the service manager. I have to think independently, often reading manufacturer documentation to solve issues which is how I have started to think of programming, reading documentation set out by the manufacturer to solve an issue.
+
+</Text>
+
+      <Text style={styles.p}>
+
+Troubleshooting is the bread and butter of my current work; and what I feel is my greatest strength. I believe it to be the result of enjoying a challenge, the rush of solving a complicated issue, and past experiences; which involved a lot of failing, but not giving up until succeeding. Over time, I created more efficient methods of troubleshooting which has built my skills to what they are today.
+
+</Text>
+
+      <Text style={styles.p}>
+
+I have demonstrated experience in React, React Native, GraphQL, REST, MongoDB, MySQL, JavaScript, Git Flow and other technologies seen below.
+
+      </Text>
+
+    </ScrollView>
 
     <View style={styles.linkBoxWrapper}>
 
@@ -235,6 +273,7 @@ const styles = StyleSheet.create({
     fontSize: 25
   },
   infoItem: {
+    color: '#839192',
     marginRight: 10,
   },
   descWrapper: {
@@ -242,6 +281,7 @@ const styles = StyleSheet.create({
     // height: 200,
     padding: 20,
     backgroundColor: 'white',
+    marginTop: 20,
     marginBottom: 10,
   },
   skill: {
@@ -259,7 +299,6 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
     alignItems: 'center',
     flexWrap: 'wrap',
-    marginTop: 10,
   },
   p: {
     marginBottom: 10,
