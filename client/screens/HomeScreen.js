@@ -1,5 +1,5 @@
 import React, {useState, useRef, useEffect} from 'react';
-import {Alert, FlatList, ScrollView, Animated, Modal, StyleSheet, Text, Button, Pressable, View, SafeAreaView, Image} from 'react-native';
+import {Linking, Alert, TouchableOpacity, FlatList, ScrollView, Animated, Modal, StyleSheet, Text, Button, Pressable, View, SafeAreaView, Image} from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
 
@@ -12,6 +12,9 @@ const HomeScreen = ({navigation}) => {
     'Node.js', 'Git Flow', 'JWT/Sessions',
     'Javascript', 'HTML', 'CSS', 
   ]
+
+  const gitHubURL = 'https://github.com/x4ndez';
+  const linkedInURL = 'https://www.linkedin.com/in/alexandernanfro/';
 
   return (<>
 
@@ -30,12 +33,12 @@ const HomeScreen = ({navigation}) => {
 
     <View style={styles.headerContainer}>
 
-        <View style={styles.avatarWrapper}>
+        <TouchableOpacity style={styles.avatarWrapper}>
           <Image
             source={require('../assets/avatar.jpg')}
             style={styles.avatar}
           />
-          </View>
+          </TouchableOpacity>
         <View style={styles.infoWrapper}>
           <Text style={styles.name}>Alexander Nanfro</Text>
           <View style={styles.flexRow}>
@@ -98,32 +101,48 @@ const HomeScreen = ({navigation}) => {
         <View style={styles.skillWrapper}>
 
           {skills.map((item, i) => 
-            (<Text
-              key={i}
-              style={styles.skill}>
-                {item}
-                </Text>)
+            (<TouchableOpacity key={i}>
+                <Text style={styles.skill}>{item}</Text>
+                </TouchableOpacity>)
           )}
 
         </View>
 
     </View>
 
-    <ScrollView style={styles.descWrapper}><Text style={styles.p}>
-      
-    My name is Alex, I am 29 years old and I currently live in Melbourne, Australia. I am motivated, enjoy a challenge, and learning new technologies. I have a proven work history of troubleshooting issues within the IoT space.
-</Text><Text style={styles.p}>
-I recently completed a Full Stack Developer bootcamp through Monash University/edX. In this period I had to present two projects as a group which gave me perspective of the experience of working within a team of programmers. I believe we had a good system; enforcing Git workflow and having regular meetings to discuss our individual progress and the project as a whole. Prior, my experience of working within a team was through construction as an electrician, but in time and experience, I became a leader. I believe having good communication within a team and a high moral, creates higher quality work. I actively try to know my peers; how they enjoy working, learn their strengths, their weaknesses, and try to form a good rapport.
-</Text><Text style={styles.p}>
-I frequently work with clients, where my interpersonal skills and presentation are important. I always display a friendly and approachable nature which assists in communicating with clients to understand their needs are met. Explaining complex concepts in a manner that anyone can understand is a skill, and often a challenge, which is where I believe I excel.
+    <ScrollView style={styles.descWrapper}></ScrollView>
 
-Working as a service technician, my day-to-day duties heavily required me to work independently within a team. I am frequently scheduled to complete multiple jobs in a day, often requiring myself to assess, diagnose and fix issues within the allocated time-frame; including making required documentation and reports to be communicated with the service manager. I have to think independently, often reading manufacturer documentation to solve issues which is how I have started to think of programming, reading documentation set out by the manufacturer to solve an issue.
+    <View style={styles.linkBoxWrapper}>
 
-Troubleshooting is the bread and butter of my current work; and what I feel is my greatest strength. I believe it to be the result of enjoying a challenge, the rush of solving a complicated issue, and past experiences; which involved a lot of failing, but not giving up until succeeding. Over time, I created more efficient methods of troubleshooting which has built my skills to what they are today.
+    <TouchableOpacity
+          style={styles.linkBox}
+          onPress={ async () => {
+            const supported = await Linking.canOpenURL(gitHubURL);
+            if(supported) await Linking.openURL(gitHubURL)
+            else Alert.alert('Cannot open URL.')
+          }}
+          >
+          <Image
+          source={require('../assets/GitHub_Logo.png')}
+          style={styles.linkLogo}
+          />
+          </TouchableOpacity>
 
-I have demonstrated experience in React, Handlebars, GraphQL, REST, MongoDB, MySQL and other technologies seen below.
+          <TouchableOpacity
+          style={styles.linkBox}
+          onPress={ async () => {
+            const supported = await Linking.canOpenURL(linkedInURL);
+            if(supported) await Linking.openURL(linkedInURL)
+            else Alert.alert('Cannot open URL.')
+          }}
+          >
+          <Image
+          source={require('../assets/LI-Logo.png')}
+          style={styles.linkLogo}
+          />
+          </TouchableOpacity>
 
-      </Text></ScrollView>
+    </View>
 
     </ScrollView>
 
@@ -199,6 +218,7 @@ const styles = StyleSheet.create({
     // height: 200,
     padding: 20,
     backgroundColor: 'white',
+    marginBottom: 10,
   },
   skill: {
     padding: 6,
@@ -229,7 +249,33 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'center',
     flexWrap: 'wrap',
+  },
+  linkBoxWrapper: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    width: '100%',
+    height: 100,
+    justifyContent: 'space-between',
+    paddingLeft: 10,
+    paddingRight: 10,
+  },
+  linkBox: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    width: '45%',
+    height: '100%',
+    justifyContent: 'center',
+    backgroundColor: 'white',
+    borderRadius: 10,
+    padding: 20,
+  },
+  linkLogo: {
+    resizeMode: 'contain',
+    width: '70%'
   }
 });
 
