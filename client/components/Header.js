@@ -7,11 +7,11 @@ const Header = (props) => {
 
   return (<>
 
-    <Image
+    {/* <Image
     source={require('../assets/favicon.png')}
-    />
+    /> */}
 
-    <Text>[x]ande</Text>
+    <Text></Text>
 
     </>);
 
