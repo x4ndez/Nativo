@@ -97,8 +97,12 @@ const HomeScreen = ({navigation}) => {
 
         <View style={styles.skillWrapper}>
 
-          {skills.map((item) => 
-            (<Text style={styles.skill}>{item}</Text>)
+          {skills.map((item, i) => 
+            (<Text
+              key={i}
+              style={styles.skill}>
+                {item}
+                </Text>)
           )}
 
         </View>
