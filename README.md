@@ -40,6 +40,7 @@ Flaticon attributions in compliance with [Flaticon-supplied guidelines](https://
 [Job Title icon located in header of home page created by Pixel perfect - Flaticon](https://www.flaticon.com/free-icons/work)<br>
 [Location icon located in header of home page created by hqrloveq - Flaticon](https://www.flaticon.com/free-icons/address-location)<br>
 [Phone icon located in header of home page created by Creaticca Creative Agency - Flaticon](https://www.flaticon.com/free-icons/phone)<br>
+[Navigation icon located in Navigation created by Andy Horvath - Flaticon](https://www.flaticon.com/free-icons/navigation)<br>
 
 ## Questions
 
