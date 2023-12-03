@@ -5,8 +5,19 @@ import { NavigationContainer } from '@react-navigation/native';
 import HomeScreen from './screens/HomeScreen';
 import DashboardScreen from './screens/DashboardScreen';
 import Header from './components/Header';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 const Stack = createNativeStackNavigator();
+const Tab = createBottomTabNavigator();
+
+function MyTabs() {
+  return (
+    <Tab.Navigator>
+      <Tab.Screen name="Home" component={HomeScreen} />
+      <Tab.Screen name="Settings" component={SettingsScreen} />
+    </Tab.Navigator>
+  );
+}
 
 const App = () => {
 
@@ -16,7 +27,12 @@ const App = () => {
 
     <NavigationContainer>
 
-      <Stack.Navigator
+    <Tab.Navigator>
+      <Tab.Screen name="Home" component={HomeScreen} />
+      <Tab.Screen name="Portfolio" component={DashboardScreen} />
+    </Tab.Navigator>
+
+      {/* <Stack.Navigator
       initialRouteName='Home'
       screenOptions={{
         headerTitle: (props) => <Header {...props} />,
@@ -33,10 +49,9 @@ const App = () => {
         component={HomeScreen}
         />
         <Stack.Screen name="Dashboard" component={DashboardScreen} />
-      </Stack.Navigator>
+      </Stack.Navigator> */}
 
     </NavigationContainer>
-
     </>);
 
 };
