@@ -5,31 +5,36 @@ import { NavigationContainer } from '@react-navigation/native';
 import HomeScreen from './screens/HomeScreen';
 import DashboardScreen from './screens/DashboardScreen';
 import Header from './components/Header';
+import NavModal from './components/NavModal';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { useNavigation } from '@react-navigation/native';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
 const App = () => {
 
+  const [modalVisible, setModalVisible] = useState(false);
+
   const handlePress = () => console.log('view clicked');
+
+  
 
   return (<>
 
     <NavigationContainer>
 
+      
+
       <Stack.Navigator
       initialRouteName='Home'
       screenOptions={{
         headerTitle: (props) => <Header {...props} />,
-        headerRight: () => (
-          <TouchableOpacity>
-            <Image
-            style={styles.menuImg}
-            source={require('./assets/icons/menu.png')}
-            />
-          </TouchableOpacity>
-        )
+        headerRight: () => 
+        <NavModal
+        modalVisible={modalVisible}
+        setModalVisible={setModalVisible}
+        />
       }}
       >
         <Stack.Screen
@@ -52,10 +57,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  menuImg: {
-    width: 25,
-    height: 25,
-  }
 });
 
 export default App;
