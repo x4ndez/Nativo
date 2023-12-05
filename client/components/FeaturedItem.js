@@ -3,19 +3,10 @@ import {Alert, Linking, TouchableOpacity, Modal, StyleSheet, Text, Button, Press
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
 
-const ProjectItem = ({navigation, props, functions}) => {
+const FeaturedItem = ({navigation, props, functions}) => {
 
   const [modalVisible, setModalVisible] = useState(false);
 
-  // useEffect(() => {
-  //   if(
-  //     props.name === 'xandinho'
-  //     || props.name === 'Nativo'
-  //     ) {
-  //     functions.setFeaturedProjects([...functions.featuredProjects, props])
-  //     console.log(props);
-  //   }
-  // }, []);
 
   return (<>
 
@@ -64,23 +55,18 @@ onPress={() => setModalVisible(false)}
     </Modal>
 
     <TouchableOpacity
-    style={styles.wrapper}
+    // style={styles.wrapper}
     onPress={() => setModalVisible(true)}
     >
 
-<View style={styles.imgWrapper}>
+<View>
 <Image
       source={{
         uri: `${props.imgLink}`
       }}
       style={styles.img}
       />
-      </View>
-      
-      <View style={styles.title}>
-      <Text>{props.name}</Text>
-      </View>
-
+</View>
     </TouchableOpacity>
 
     {/* </FlatList> */}
@@ -89,40 +75,12 @@ onPress={() => setModalVisible(false)}
 
 };
 const styles = StyleSheet.create({
-  wrapper: {
-    marginBottom: 10,
-    borderRadius: 10,
-    width: '100%',
-    height: '40',
-    backgroundColor: '#D4E6F1',
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
-    alignItems: 'center'
-
-  },
   img: {
-    width: '100%',
+    width: 100,
     height: 100,
     borderRadius: 10,
     margin: 10,
   },
-  imgWrapper: {
-    width: '30%',
-  },
-  title: {
-    height: '100%',
-    width: '70%',
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  // modalContainer: {
-  //   width: '100%',
-  //   height: '100%',
-  //   backgroundColor: 'red'
-  // }
 });
 
-export default ProjectItem;
+export default FeaturedItem;

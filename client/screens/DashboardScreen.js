@@ -1,12 +1,14 @@
-import React, {useState} from 'react';
-import {Alert, Modal, StyleSheet, Text, Button, Pressable, View, SafeAreaView, Image, FlatList} from 'react-native';
+import React, {useState, useEffect} from 'react';
+import {Alert, Modal, StyleSheet, Text, Button, Pressable, View, SafeAreaView, Image, FlatList, ScrollView} from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
 import ProjectItem from '../components/ProjectItem';
+import FeaturedItem from '../components/FeaturedItem';
 
 const DashboardScreen = ({route, navigation}) => {
 
   const [projects, setProjects] = useState([]);
+  const [featuredProjects, setFeaturedProjects] = useState([]);
 
   async function getRepoData() {
 
@@ -49,7 +51,7 @@ const DashboardScreen = ({route, navigation}) => {
 
         }}
 
-        React.useEffect(() => {
+        useEffect(() => {
           if(!projects) return;
           // console.log(projects)
         }, [projects]);
@@ -58,39 +60,85 @@ const DashboardScreen = ({route, navigation}) => {
 
   return (<>
 
-    <View style={styles.mainWrapper}>
-
-        <Button
-        title='Go to Home'
-        onPress={() => navigation.navigate('Home')}
-        />
+    <SafeAreaView style={styles.safeAreaView}>
 
     {projects.length > 0
     ? (<>
 
+<View style={styles.featuredContainer}>
+
+<Text
+style={styles.featuredSectionHeading}
+>Featured</Text>
+
+<FlatList
+showsHorizontalScrollIndicator={false}
+contentContainerStyle={styles.featuredWrapper}
+horizontal
+data={projects}
+renderItem={({item}) =>
+item.name === 'Quale'
+|| item.name === 'xandinho'
+|| item.name === 'Nativo'
+|| item.name === 'blogueiro'
+? <FeaturedItem props={item} />
+: null}
+/>
+
+</View>
+
+<View style={styles.mainWrapper}>
+
+        <Text
+        style={styles.sectionHeading}
+        >Portfolio</Text>
+
 <FlatList
     data={projects}
-    renderItem={({item}) => <ProjectItem props={item} />}
+    renderItem={({item}) => 
+    <ProjectItem
+    props={item}
+    />}
     />
+
+</View>
 
     </>)
     : (<>
         <Text>Loading...</Text>
         </>)}
 
-    {/* <ProjectItem /> */}
-
-    </View>
+    </SafeAreaView>
 
     </>);
 
 };
 const styles = StyleSheet.create({
+    safeAreaView: {
+        width: '100%',
+        height: '100%',
+    },
   mainWrapper: {
     padding: 15,
-    height: '100%',
     backgroundColor: 'white'
   },
+  featuredContainer: {
+    padding: 15,
+    backgroundColor: '#D6DBDF'
+  },
+  featuredWrapper: {
+    display: 'flex',
+    alignItems: 'center',
+  },
+  featuredSectionHeading: {
+    fontWeight: 'bold',
+    letterSpacing: 1,
+  },
+  sectionHeading: {
+    fontWeight: 'bold',
+    letterSpacing: 1,
+    marginBottom: 10,
+  }
 });
 
 export default DashboardScreen;
