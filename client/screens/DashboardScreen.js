@@ -124,7 +124,7 @@ const styles = StyleSheet.create({
   },
   featuredContainer: {
     padding: 15,
-    backgroundColor: '#D6DBDF'
+    backgroundColor: '#F2F3F4'
   },
   featuredWrapper: {
     display: 'flex',
