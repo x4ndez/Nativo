@@ -1,61 +1,20 @@
-import React, {useState, useEffect} from 'react';
-import {Alert, Linking, TouchableOpacity, Modal, StyleSheet, Text, Button, Pressable, View, SafeAreaView, Image, FlatList} from 'react-native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { NavigationContainer } from '@react-navigation/native';
+import {useState, useEffect} from 'react';
+import {TouchableOpacity, StyleSheet, View, Image} from 'react-native';
+import ProjectModal from './ProjectModal';
 
-const FeaturedItem = ({navigation, props, functions}) => {
+const FeaturedItem = ({props}) => {
 
   const [modalVisible, setModalVisible] = useState(false);
 
-
   return (<>
 
-    {/* <FlatList> */}
-
-    <Modal
-    animationType='fade'
-    transparent={false}
-    visible={modalVisible}
-    // presentationStyle='fullScreen'
-    >
-
-<Button
-title='X'
-onPress={() => setModalVisible(false)}
-/>
-
-    <Text>{props.name}</Text>
-    
-    <Image
-      source={{
-        uri: `${props.imgLink}`
-      }}
-      style={styles.img}
-      />
-
-      <Text>{props.description}</Text>
-
-      <Button
-      title='Deployed Application'
-      onPress={ async () => {
-        const supported = await Linking.canOpenURL(props.homePage);
-        if(supported) await Linking.openURL(props.homePage)
-        else Alert.alert('A deployed application is not provided.')
-      }}
-      />
-      <Button
-      title='GitHub Repository'
-      onPress={ async () => {
-        const supported = await Linking.canOpenURL(props.repoUrl);
-        if(supported) await Linking.openURL(props.repoUrl)
-        else Alert.alert('A GitHub Repository is not provided.')
-      }}
-      />
-
-    </Modal>
+<ProjectModal
+    props={props}
+    modalVisible={modalVisible}
+    setModalVisible={setModalVisible}
+    />
 
     <TouchableOpacity
-    // style={styles.wrapper}
     onPress={() => setModalVisible(true)}
     >
 
@@ -68,8 +27,6 @@ onPress={() => setModalVisible(false)}
       />
 </View>
     </TouchableOpacity>
-
-    {/* </FlatList> */}
 
     </>);
 

@@ -1,67 +1,18 @@
-import React, {useState, useEffect} from 'react';
-import {Alert, Linking, TouchableOpacity, Modal, StyleSheet, Text, Button, Pressable, View, SafeAreaView, Image, FlatList} from 'react-native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { NavigationContainer } from '@react-navigation/native';
+import {useState, useEffect} from 'react';
+import {TouchableOpacity, StyleSheet, Text, View, Image} from 'react-native';
+import ProjectModal from './ProjectModal';
 
-const ProjectItem = ({navigation, props, functions}) => {
+const ProjectItem = ({props}) => {
 
   const [modalVisible, setModalVisible] = useState(false);
 
-  // useEffect(() => {
-  //   if(
-  //     props.name === 'xandinho'
-  //     || props.name === 'Nativo'
-  //     ) {
-  //     functions.setFeaturedProjects([...functions.featuredProjects, props])
-  //     console.log(props);
-  //   }
-  // }, []);
-
   return (<>
 
-    {/* <FlatList> */}
-
-    <Modal
-    animationType='fade'
-    transparent={false}
-    visible={modalVisible}
-    // presentationStyle='fullScreen'
-    >
-
-<Button
-title='X'
-onPress={() => setModalVisible(false)}
-/>
-
-    <Text>{props.name}</Text>
-    
-    <Image
-      source={{
-        uri: `${props.imgLink}`
-      }}
-      style={styles.img}
-      />
-
-      <Text>{props.description}</Text>
-
-      <Button
-      title='Deployed Application'
-      onPress={ async () => {
-        const supported = await Linking.canOpenURL(props.homePage);
-        if(supported) await Linking.openURL(props.homePage)
-        else Alert.alert('A deployed application is not provided.')
-      }}
-      />
-      <Button
-      title='GitHub Repository'
-      onPress={ async () => {
-        const supported = await Linking.canOpenURL(props.repoUrl);
-        if(supported) await Linking.openURL(props.repoUrl)
-        else Alert.alert('A GitHub Repository is not provided.')
-      }}
-      />
-
-    </Modal>
+    <ProjectModal
+    props={props}
+    modalVisible={modalVisible}
+    setModalVisible={setModalVisible}
+    />
 
     <TouchableOpacity
     style={styles.wrapper}
@@ -82,8 +33,6 @@ onPress={() => setModalVisible(false)}
       </View>
 
     </TouchableOpacity>
-
-    {/* </FlatList> */}
 
     </>);
 
@@ -118,11 +67,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  // modalContainer: {
-  //   width: '100%',
-  //   height: '100%',
-  //   backgroundColor: 'red'
-  // }
 });
 
 export default ProjectItem;
