@@ -312,6 +312,7 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     paddingRight: 10,
     gap: 10,
+    marginBottom: 10,
   },
   linkBox: {
     display: 'flex',
