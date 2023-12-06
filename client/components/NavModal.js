@@ -1,5 +1,5 @@
 import {useState, useEffect} from 'react';
-import {TouchableOpacity, Modal, StyleSheet, Text, View, Image} from 'react-native';
+import {TouchableOpacity, Modal, StyleSheet, Text, View, Image, TouchableWithoutFeedback} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 const NavModal = (props) => {
@@ -13,14 +13,11 @@ const NavModal = (props) => {
       transparent={true}
       visible={props.modalVisible}
       >
+        <TouchableWithoutFeedback onPress={() => props.setModalVisible(false)}>
+
         <View
         style={styles.modalContainer}
         >
-
-<TouchableOpacity
-style={styles.dismissModal}
-        onPress={() => props.setModalVisible(false)}
-        ><Text>X</Text></TouchableOpacity>
 
         <TouchableOpacity
         onPress={() => {
@@ -41,6 +38,8 @@ style={styles.dismissModal}
           </TouchableOpacity>
 
         </View>
+
+        </TouchableWithoutFeedback>
         
       </Modal>
 
@@ -62,8 +61,7 @@ const styles = StyleSheet.create({
     height: 25,
   },
   modalContainer: {
-    opacity: 0.9,
-    backgroundColor: 'white',
+    backgroundColor: 'rgba(255,255,255,0.8)',
     width: '100%',
     height: '100%',
     display: 'flex',
