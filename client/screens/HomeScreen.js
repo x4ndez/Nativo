@@ -1,7 +1,5 @@
-import React, {useState, useRef, useEffect} from 'react';
-import {Linking, Alert, TouchableOpacity, FlatList, ScrollView, Animated, Modal, StyleSheet, Text, Button, Pressable, View, SafeAreaView, Image, Touchable} from 'react-native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { NavigationContainer } from '@react-navigation/native';
+import {useState, useEffect} from 'react';
+import {Linking, Alert, TouchableOpacity, ScrollView, StyleSheet, Text, View, SafeAreaView, Image} from 'react-native';
 
 const HomeScreen = ({navigation}) => {
 
@@ -17,13 +15,6 @@ const HomeScreen = ({navigation}) => {
   const linkedInURL = 'https://www.linkedin.com/in/alexandernanfro/';
 
   return (<>
-
-        {/* <Button
-        title='Go to Dashboard'
-        onPress={() => navigation.navigate('Dashboard', {
-            feedback: 'lol',
-        })}
-        /> */}
 
 <SafeAreaView style={styles.safeAreaView}>
 
@@ -119,8 +110,6 @@ const HomeScreen = ({navigation}) => {
         </TouchableOpacity>
 
     </ScrollView>
-
-        {/* <FlatList horizontal></FlatList> */}
 
         <View style={styles.skillWrapper}>
 
@@ -223,7 +212,6 @@ const styles = StyleSheet.create({
     height: '100%'
   },
   descContainer: {
-    // backgroundColor: 'green',
     display: 'flex',
     height: 50,
     margin: 0,
@@ -278,7 +266,6 @@ const styles = StyleSheet.create({
   },
   descWrapper: {
     width: '100%',
-    // height: 200,
     padding: 20,
     backgroundColor: 'white',
     marginTop: 20,

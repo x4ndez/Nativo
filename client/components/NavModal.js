@@ -1,7 +1,5 @@
-import React, {useState} from 'react';
-import {Alert, TouchableOpacity, Modal, StyleSheet, Text, Button, Pressable, View, SafeAreaView, Image} from 'react-native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { NavigationContainer } from '@react-navigation/native';
+import {useState, useEffect} from 'react';
+import {TouchableOpacity, Modal, StyleSheet, Text, View, Image} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 const NavModal = (props) => {
@@ -59,9 +57,6 @@ style={styles.dismissModal}
 
 };
 const styles = StyleSheet.create({
-  container: {
-
-  },
   menuImg: {
     width: 25,
     height: 25,

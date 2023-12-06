@@ -1,7 +1,5 @@
-import React, {useState, useEffect} from 'react';
-import {Alert, Modal, StyleSheet, Text, Button, Pressable, View, SafeAreaView, Image, FlatList, ScrollView} from 'react-native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { NavigationContainer } from '@react-navigation/native';
+import {useState, useEffect} from 'react';
+import {StyleSheet, Text, View, SafeAreaView, FlatList} from 'react-native';
 import ProjectItem from '../components/ProjectItem';
 import FeaturedItem from '../components/FeaturedItem';
 
@@ -50,11 +48,6 @@ const DashboardScreen = ({route, navigation}) => {
           setProjects(array);
 
         }}
-
-        useEffect(() => {
-          if(!projects) return;
-          // console.log(projects)
-        }, [projects]);
 
         getRepoData();
 
