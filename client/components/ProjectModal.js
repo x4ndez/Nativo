@@ -1,5 +1,5 @@
 import {useState, useEffect} from 'react';
-import {Alert, Linking, Modal, StyleSheet, Text, Button, Image} from 'react-native';
+import {Alert, View, Linking, Modal, StyleSheet, Text, Button, Image, TouchableOpacity} from 'react-native';
 
 const ProjectModal = ({props, modalVisible, setModalVisible}) => {
 
@@ -7,16 +7,20 @@ const ProjectModal = ({props, modalVisible, setModalVisible}) => {
 
     <Modal
     animationType='fade'
-    transparent={false}
+    transparent={true}
     visible={modalVisible}
     >
 
-<Button
-title='X'
-onPress={() => setModalVisible(false)}
-/>
+<View
+        style={styles.modalContainer}
+        >
 
-    <Text>{props.name}</Text>
+<TouchableOpacity
+style={styles.dismissModal}
+        onPress={() => setModalVisible(false)}
+        ><Text style={styles.dismissText}>X</Text></TouchableOpacity>
+
+    <Text style={styles.title}>{props.name}</Text>
     
     <Image
       source={{
@@ -25,24 +29,35 @@ onPress={() => setModalVisible(false)}
       style={styles.img}
       />
 
-      <Text>{props.description}</Text>
+      <Text style={styles.description}>{props.description}</Text>
 
-      <Button
-      title='Deployed Application'
+      <View
+      style={styles.buttonWrapper}>
+
+      <TouchableOpacity
+      style={styles.button}
       onPress={ async () => {
         const supported = await Linking.canOpenURL(props.homePage);
         if(supported) await Linking.openURL(props.homePage)
         else Alert.alert('A deployed application is not provided.')
       }}
-      />
-      <Button
-      title='GitHub Repository'
+      >
+        <Text>Deployed Application</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+      style={styles.button}
       onPress={ async () => {
         const supported = await Linking.canOpenURL(props.repoUrl);
         if(supported) await Linking.openURL(props.repoUrl)
         else Alert.alert('A GitHub Repository is not provided.')
       }}
-      />
+      >
+        <Text>GitHub Repository</Text>
+      </TouchableOpacity>
+
+</View>
+
+</View>
 
     </Modal>
 
@@ -51,11 +66,58 @@ onPress={() => setModalVisible(false)}
 };
 const styles = StyleSheet.create({
   img: {
-    width: '100%',
-    height: 100,
+    width: 300,
+    height: 150,
     borderRadius: 10,
-    margin: 10,
+    marginTop: 30,
+    marginBottom: 50,
   },
+  modalContainer: {
+    backgroundColor: 'rgba(255,255,255,0.9)',
+    width: '100%',
+    height: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  dismissModal: {
+    position: 'absolute',
+    top: 0,
+    right: 0,
+    margin: 50,
+  },
+  dismissText: {
+    fontSize: 30,
+  },
+  button: {
+    width: '50%',
+    height: 50,
+    backgroundColor: '#E5E7E9',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 10,
+  },
+  buttonWrapper: {
+    position: 'absolute',
+    bottom: 0,
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 20,
+    gap: 10,
+    width: '100%',
+  },
+  title: {
+    fontSize: 20,
+    fontWeight: 'bold',
+  },
+  description: {
+    marginLeft: 30,
+    marginRight: 30,
+  }
 });
 
 export default ProjectModal;
