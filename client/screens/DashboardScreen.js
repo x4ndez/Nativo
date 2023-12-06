@@ -1,7 +1,8 @@
 import {useState, useEffect} from 'react';
-import {StyleSheet, Text, View, SafeAreaView, FlatList} from 'react-native';
+import {StyleSheet, Text, View, SafeAreaView, FlatList, Image} from 'react-native';
 import ProjectItem from '../components/ProjectItem';
 import FeaturedItem from '../components/FeaturedItem';
+import Loading from '../components/Loading';
 
 const DashboardScreen = ({route, navigation}) => {
 
@@ -95,10 +96,9 @@ item.name === 'Quale'
     />
 
 </View>
-
     </>)
     : (<>
-        <Text>Loading...</Text>
+        <Loading />
         </>)}
 
     </SafeAreaView>
