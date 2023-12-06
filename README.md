@@ -1,6 +1,6 @@
 # Nativo
 
-![Screenshot of application](./assets/screenshot.gif)
+![Screenshot of application](./assets/screenshot.png)
 
 ## Description
 
