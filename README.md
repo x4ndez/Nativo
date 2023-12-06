@@ -1,6 +1,6 @@
 # Nativo
 
-![Screenshot of application](./assets/screenshot.png)
+<img src="./assets/screenshot.png" height="800" />
 
 ## Description
 
