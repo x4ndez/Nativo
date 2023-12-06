@@ -95,7 +95,11 @@ item.name === 'Quale'
     />}
     />
 
+    
+
 </View>
+
+<Text>alexbitch</Text>
     </>)
     : (<>
         <Loading />
@@ -113,13 +117,17 @@ const styles = StyleSheet.create({
     },
   mainWrapper: {
     padding: 15,
-    backgroundColor: 'white'
+    backgroundColor: 'white',
+    height: '80%',
+    marginBottom: 10,
   },
   featuredContainer: {
     padding: 15,
-    backgroundColor: '#F2F3F4'
+    backgroundColor: '#F2F3F4',
+    height: '20%',
   },
   featuredWrapper: {
+    
     display: 'flex',
     alignItems: 'center',
   },
