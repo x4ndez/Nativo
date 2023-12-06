@@ -41,6 +41,7 @@ Flaticon attributions in compliance with [Flaticon-supplied guidelines](https://
 [Location icon located in header of home page created by hqrloveq - Flaticon](https://www.flaticon.com/free-icons/address-location)<br>
 [Phone icon located in header of home page created by Creaticca Creative Agency - Flaticon](https://www.flaticon.com/free-icons/phone)<br>
 [Navigation icon located in Navigation created by Andy Horvath - Flaticon](https://www.flaticon.com/free-icons/navigation)<br>
+[Loading icon located while loading in Portfolio created by Freepik - Flaticon](https://www.flaticon.com/free-icons/loading)<br>
 
 ## Questions
 
