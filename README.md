@@ -12,7 +12,8 @@ You want to see my portfolio, but you hate websites. That's okay... there's an a
 2. [Deployed Application](#deployed-application)
 3. [License](#license)
 4. [Contribution](#contribution)
-5. [Questions](#questions)
+5. [Attributions](#attributions)
+6. [Questions](#questions)
 
 ## Developer Comments
 
