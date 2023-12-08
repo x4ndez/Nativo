@@ -1,13 +1,13 @@
 {
   "expo": {
     "name": "Nativo",
-    "slug": "Nativo",
+    "slug": "nativo",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -19,12 +19,19 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.x4ndez.nativo"
     },
     "web": {
-      "favicon": "./assets/favicon.png"
-    }
+      "favicon": ""
+    },
+    "extra": {
+      "eas": {
+        "projectId": "89262590-6dd5-4f1c-a512-d421a7901336"
+      }
+    },
+    "owner": "x4ndez"
   }
 }
