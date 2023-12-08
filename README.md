@@ -32,7 +32,7 @@ A note on installing this app on Android
 
 - On devices running Android 7.1.1 (API level 25) and lower, you should enable the Unknown sources system setting, found in Settings > Security on your device.
 
-![QR Code to download Nativo](../Nativo/assets/installQR.png)
+![QR Code to download Nativo](./assets/installQR.png)
 
 ## License
 
